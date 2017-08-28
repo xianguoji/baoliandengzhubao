@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="screen-orientation" content="portrait">
+    <!--uc强制竖屏-->
+    <meta name="full-screen" content="yes">
+    <!-- UC强制全屏 -->
+    <meta name="browsermode" content="application">
+    <!-- UC应用模式 -->
+    <meta name="x5-orientation" content="portrait">
+    <!--QQ强制竖屏-->
+    <meta name="x5-fullscreen" content="true">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- QQ应用模式 -->
+    <title>我的订单</title>
+    <link href="images/logo1.ico" rel="shortcut icon" />
+    <script src="js/jquery-1.7.2.min.js"></script>
+
+</head>
+<script>
+    (function (win) {
+        var doc = win.document;
+        var docEl = doc.documentElement;
+        var tid;
+
+        function refreshRem() {
+            var width = docEl.getBoundingClientRect().width;
+            if (width > 540) { // 最大宽度
+                width = 540;
+            }
+            var rem = width / 6.4;
+            docEl.style.fontSize = rem + 'px';
+        }
+
+        win.addEventListener('resize', function () {
+            clearTimeout(tid);
+            tid = setTimeout(refreshRem, 300);
+        }, false);
+        win.addEventListener('pageshow', function (e) {
+            if (e.persisted) {
+                clearTimeout(tid);
+                tid = setTimeout(refreshRem, 300);
+            }
+        }, false);
+
+        refreshRem();
+
+    })(window);
+
+    //document.documentElement.style.fontSize = document.documentElement.clientWidth / 640*100 + 'px';
+</script>
+
+
+<style>
+    html {  font-family: 'Microsoft Yahe', 'Segoe UI', 'Lucida Grande', 'Helvetica Neue', Helvetica, tahoma, Arial, 'Droid Sans', 'hiragino sans gb', stheiti, 'wenquanyi micro hei', '\5FAE\8F6F\96C5\9ED1', sans-serif;  }
+
+    html, body {
+        background-color: #eee;
+    }
+
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    input[type=”button”], input[type=”submit”], input[type=”reset”] {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    img {
+        border: none;
+        display: block;
+        width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+        outline: none;
+        background: transparent;
+        -webkit-tap-highlight-color: transparent;
+        color: #333;
+    }
+
+    body {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        font-size: 0.25rem;
+        line-height: 1.5;
+        color: #3d4145;
+        /*overflow: hidden;*/
+    }
+    .main{
+        overflow: hidden;
+        margin-bottom: 0.3rem;
+    }
+    header {
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        height: 1rem;
+        background: #797979;
+        position: fixed;
+        top: 0;
+        z-index: 100;
+    }
+
+    .icon_back {
+        width: 0.8rem;
+        height: 0.8rem;
+        background: url(images/grzx/back.png) center no-repeat;
+        background-size: 50%;
+        margin-top: 0.1rem;
+    }
+
+    .logo_txt {
+        color: #fff;
+        font-size: 0.35rem;
+        margin-top: 0.2rem;
+    }
+
+    .shopping_cart {
+        background: url(images/index/i-gouwuce.png) center no-repeat;
+        background-size: 50%;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .bar-nav-title {
+        width: 2.5rem;
+    }
+
+    section {
+        margin-bottom: 1.3rem;
+        margin-top: 1rem;
+        background: #eee;
+        overflow: hidden;
+    }
+
+    .order-nav-box {
+        background-color: #fff;
+    }
+
+    .order-nav {
+        font-size: 0.3rem;
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .order-on {
+        color: #C37E5A;
+        border-bottom: 1px solid #C37E5A;
+    }
+
+    .order-nav > li {
+        padding: 0.25rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .order-item {
+        background-color: #fff;
+        padding-bottom: 0.5rem;
+    }
+
+    .order-num {
+        background-color: #FFEFE5;
+        padding: 0.2rem;
+    }
+
+    .order-num > span:nth-of-type(3) {
+        color: #C37E5A;
+        font-size: 0.3rem;
+        float: right;
+        margin-right: 0.3rem;
+    }
+
+    .order-list1 {
+        padding: 0.2rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .order-img > img {
+        display: inline-block;
+        width: 1.5rem;
+        vertical-align: middle;
+    }
+
+    .order-info {
+        display: inline-block;
+        width: 72%;
+    }
+
+    .order-info > p:nth-of-type(1) {
+        color: #4b566a;
+        font-weight: bold;
+    }
+
+    .order-info > p:nth-of-type(1) > span {
+        float: right;
+    }
+
+    .order-info > p:nth-of-type(2) {
+        color: #ccc;
+        margin-top: 0.1rem;
+    }
+    .order-total{
+        text-align: right;
+        padding:0.2rem;
+        font-size: 0.28rem;
+    }
+    .total-info{
+        line-height:0.8rem;
+    }
+    .total-info span{
+        color: red;
+    }
+    .order-btn>a{
+        border:1px solid #C37E5A;
+        border-radius: 1px;
+        padding:0.05rem 0.2rem;
+    }
+    .check{
+        margin-left: 0.2rem;
+        color: #C37E5A;
+    }
+    .display{
+        display: none;
+    }
+    .undisplay{
+        display: block;
+    }
+</style>
+<body>
+<div class="main">
+    <div class="home">
+        <header>
+            <a href="my.html" class="icon_back"></a>
+            <a href="javascript:;" class="logo_txt">我的订单</a>
+            <a href="javascript:;" class="shopping_cart"></a>
+        </header>
+        <section>
+            <!--order导航栏-->
+            <div class="order-nav-box">
+                <ul class="order-nav">
+                    <li class="order-on">我的订单</li>
+                    <li>待付款</li>
+                    <li>已完成</li>
+                </ul>
+            </div>
+            <!--主体-->
+            <div class="order-con">
+                <!--已付定金-->
+                <div class="order-item deposit">
+                    <p class="order-num"><span>订单编号 </span><span>12345678910</span><span>已付订金</span></p>
+                    <div class="order-list1">
+                        <div class="order-img">
+                            <img src="images/grzx/th-zuansi1.jpg" alt="">
+                            <div class="order-info">
+                                <p>0.32克拉F色SI1圆形钻石 <span>￥6055.00</span></p>
+                                <p>GIA-5152343233</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-list1">
+                        <div class="order-img">
+                            <img src="images/grzx/th-zuansi1.jpg" alt="">
+                            <div class="order-info">
+                                <p>0.32克拉F色SI1圆形钻石 <span>￥6055.00</span></p>
+                                <p>GIA-5152343233</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-list1">
+                        <div class="order-img">
+                            <img src="images/grzx/th-zuansi1.jpg" alt="">
+                            <div class="order-info">
+                                <p>0.32克拉F色SI1圆形钻石 <span>￥6055.00</span></p>
+                                <p>GIA-5152343233</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-total">
+                        <div class="total-info">
+                            <p>共<span>3</span>件商品 合计: <span>￥12800.00</span> 订金: <span>3000.00</span></p>
+                        </div>
+                        <div class="order-btn">
+                            <a class="cancel" href="">取消订单</a>
+                            <a class="check" href="">查看物流</a>
+                        </div>
+                    </div>
+                </div>
+                <!--已付款-->
+                <div class="order-item display">
+                    <p class="order-num"><span>订单编号 </span><span>12345678910</span><span>待付款</span></p>
+                    <div class="order-list1">
+                        <div class="order-img">
+                            <img src="images/grzx/th-zuansi1.jpg" alt="">
+                            <div class="order-info">
+                                <p>0.32克拉F色SI1圆形钻石 <span>￥6055.00</span></p>
+                                <p>GIA-5152343233</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-total">
+                        <div class="total-info">
+                            <p>共<span>1</span>件商品 合计: <span>￥6055.00</span> 订金: <span>1000.00</span></p>
+                        </div>
+                        <div class="order-btn">
+                            <a class="cancel" href="">取消订单</a>
+                            <a class="check" href="">预付订金</a>
+                        </div>
+                    </div>
+                </div>
+                <!--已完成-->
+                <div class="order-item display">
+                    <p class="order-num"><span>订单编号 </span><span>12345678910</span><span>已完成</span></p>
+                    <div class="order-list1">
+                        <div class="order-img">
+                            <img src="images/grzx/th-zuansi1.jpg" alt="">
+                            <div class="order-info">
+                                <p>0.32克拉F色SI1圆形钻石 <span>￥6055.00</span></p>
+                                <p>GIA-5152343233</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-total">
+                        <div class="total-info">
+                            <p>共<span>1</span>件商品 合计: <span>￥6055.00</span> 订金: <span>1000.00</span></p>
+                        </div>
+                        <div class="order-btn">
+                            <a class="cancel" href="">删除订单</a>
+                            <a class="check" href="">&nbsp;&nbsp;评价&nbsp;&nbsp; </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+</div>
+</body>
+<script>
+    $(function () {
+        $(".order-nav>li").click(function () {
+            var orderindex=$(this).index();
+            $(this).addClass("order-on").siblings().removeClass("order-on");
+            $(this)
+            $(".order-item").eq(orderindex).css("display","block").siblings().css("display","none");
+        })
+    });
+
+</script>
+</html>

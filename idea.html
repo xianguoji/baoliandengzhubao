@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="screen-orientation" content="portrait">
+    <!--uc强制竖屏-->
+    <meta name="full-screen" content="yes">
+    <!-- UC强制全屏 -->
+    <meta name="browsermode" content="application">
+    <!-- UC应用模式 -->
+    <meta name="x5-orientation" content="portrait">
+    <!--QQ强制竖屏-->
+    <meta name="x5-fullscreen" content="true">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- QQ应用模式 -->
+    <title>定制</title>
+    <link rel="stylesheet" href="css/swiper-3.4.0.min.css">
+    <link href="images/logo1.ico" rel="shortcut icon" />
+    <script src="js/swiper-3.4.0.min.js"></script>
+
+</head>
+<script>
+    (function (win) {
+        var doc = win.document;
+        var docEl = doc.documentElement;
+        var tid;
+
+        function refreshRem() {
+            var width = docEl.getBoundingClientRect().width;
+            if (width > 540) { // 最大宽度
+                width = 540;
+            }
+            var rem = width / 6.4;
+            docEl.style.fontSize = rem + 'px';
+        }
+
+        win.addEventListener('resize', function () {
+            clearTimeout(tid);
+            tid = setTimeout(refreshRem, 300);
+        }, false);
+        win.addEventListener('pageshow', function (e) {
+            if (e.persisted) {
+                clearTimeout(tid);
+                tid = setTimeout(refreshRem, 300);
+            }
+        }, false);
+
+        refreshRem();
+
+    })(window);
+
+    //document.documentElement.style.fontSize = document.documentElement.clientWidth / 640*100 + 'px';
+</script>
+
+<style>
+    html {
+        font-family: 'Microsoft Yahe', 'Segoe UI', 'Lucida Grande', 'Helvetica Neue', Helvetica, tahoma, Arial, 'Droid Sans', 'hiragino sans gb', stheiti, 'wenquanyi micro hei', '\5FAE\8F6F\96C5\9ED1', sans-serif;
+    }
+
+    html, body {
+        background: #fff;
+    }
+
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    input[type=”button”], input[type=”submit”], input[type=”reset”] {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    img {
+        border: none;
+        display: block;
+        width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+        outline: none;
+        background: transparent;
+        -webkit-tap-highlight-color: transparent;
+        color: #333;
+    }
+
+    body {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        font-size: 0.25rem;
+        line-height: 1.5;
+        color: #3d4145;
+        background-color: #eee;
+        /*overflow: hidden;*/
+    }
+    .main{
+        overflow: hidden;
+        margin-bottom: 0.3rem;
+    }
+    header {
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        height: 1rem;
+        background: #797979;
+        position: fixed;
+        top: 0;
+        z-index: 100;
+    }
+
+    .icon_menu {
+        width: 0.8rem;
+        height: 0.8rem;
+        background: url(images/index/i-menu.png) center no-repeat;
+        background-size: 50%;
+        margin-top: 0.1rem;
+    }
+
+    .logo_txt {
+        height: 0.8rem;
+        margin-top: 0.1rem;
+    }
+
+    .shopping_cart {
+        background: url(images/index/i-gouwuce.png) center no-repeat;
+        background-size: 50%;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .bar-nav-title {
+        width: 2.5rem;
+    }
+
+    section {
+        margin-bottom: 1.3rem;
+        margin-top: 1rem;
+        background: #eee;
+        overflow: hidden;
+    }
+
+    .home-footer {
+        margin-top: 0.1rem;
+        background-color: #fff;
+        padding-top: 0.1rem;
+    }
+
+    .footer-img {
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding-bottom: 0.1rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .footer-img a {
+        width: 1.3rem;
+    }
+
+    .footer-img a > div {
+        height: 0.7rem;
+    }
+
+    .footer-img a > p {
+        text-align: center;
+    }
+
+    .footer-img a:nth-of-type(1) div {
+        background: url(images/index/i-zp.png) center no-repeat;
+        background-size: contain;
+    }
+
+    .footer-img a:nth-of-type(2) div {
+        background: url(images/index/i-qgby.png) center no-repeat;
+        background-size: contain;
+    }
+
+    .footer-img a:nth-of-type(3) div {
+        background: url(images/index/i-zsby.png) center no-repeat;
+        background-size: contain;
+    }
+
+    .footer-img a:nth-of-type(4) div {
+        background: url(images/index/i-srdz.png) center no-repeat;
+        background-size: contain;
+    }
+
+    .footer_txt, .footer_txt2 {
+        font-size: 0.3rem;
+        text-align: center;
+    }
+
+    .footer_txt a {
+        margin: 0.2rem 0;
+    }
+
+    .footer_txt a:nth-of-type(1) i {
+        display: inline-block;
+        width: 0.35rem;
+        height: 0.35rem;
+        background: url("images/index/dianhua.png") no-repeat left;
+        background-size: contain;
+    }
+
+    .footer_txt a:nth-of-type(2) {
+        display: inline-block;
+        text-align: center;
+    }
+
+    .footer_txt a:nth-of-type(2) p {
+        width: 3rem;
+        color: #ffffff;
+        background: #C57E5D;
+        border-radius: 0.1rem;
+    }
+
+    .pc-footer {
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        height: 1.1rem;
+        background: #fff;
+        position: fixed;
+        bottom: 0;
+        padding-top: 0.1rem;
+        border-top: 1px solid #F1F1F1;
+        z-index: 100;
+    }
+
+    .pc-footer a i {
+        display: inline-block;
+        width: 0.55rem;
+        height: 0.55rem;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .on {
+        color: #C57E5D;
+    }
+
+    .go-home {
+        background: url("images/bottom-fxied/i-sy-e.png") no-repeat center;
+        background-size: contain;
+    }
+
+    .idea {
+        background: url("images/bottom-fxied/i-dz-d.png") no-repeat center;
+        background-size: contain;
+    }
+
+    .book {
+        background: url("images/bottom-fxied/i-zs-e.png") no-repeat center;
+        background-size: contain;
+    }
+
+    .my {
+        background: url("images/bottom-fxied/i-wd-e.png") no-repeat center;
+        background-size: contain;
+    }
+
+    .tzs {
+        text-align: center;
+        background-color: #fff;
+        margin: 0.2rem;
+    }
+
+    .tzs > img {
+        display: inline-block;
+        width: 30%;
+    }
+
+    .tzs-text, .tzs-btn {
+        font-size: 0.3rem;
+        font-weight: bold;
+    }
+
+    .tzs-btn {
+        display: inline-block;
+        width: 2.5rem;
+        border-radius: 0.1rem;
+        color: #ffffff;
+        background-color: #c57e5d;
+        margin: 0.2rem 0;
+    }
+
+    .idea-banner-box{
+        text-align: center;
+        background-color: #fff;
+        margin: 0.2rem;
+    }
+    .idea-banner-box .banner-title{
+        font-size: 0.35rem;
+        font-weight: bold;
+        line-height: 1rem;
+    }
+    .idea-banner-box .swiper-wrapper img{
+        display: inline-block;
+        width: 70%;
+    }
+</style>
+<body>
+<div class="main">
+    <div class="home">
+        <header>
+            <a href="javascript:;" class="icon_menu"></a>
+            <a href="javascript:;" class="logo_txt"><img class="bar-nav-title" src="images/index/logo-2.png" alt=""/></a>
+            <a href="javascript:;" class="shopping_cart"></a>
+        </header>
+
+        <section>
+            <div>
+                <img src="images/index/p1.jpg" alt="">
+            </div>
+            <div class="tzs">
+                <img src="images/grzx/th-zuansi1.jpg" alt="">
+                <p class="tzs-text">从全球钻石库挑选一颗美钻</p>
+                <p class="tzs-text">然后选择心仪的款式</p>
+                <a href="search-zs.html"><p class="tzs-btn">挑钻石</p></a>
+            </div>
+            <div class="tzs">
+                <img src="images/grzx/th-zuansi1.jpg" alt="">
+                <p class="tzs-text">先挑选心仪的款式</p>
+                <p class="tzs-text">然后选择合适的美钻</p>
+                <a href="search-zs.html"><p class="tzs-btn">挑款式</p></a>
+            </div>
+            <div class="idea-banner-box">
+                <div class="banner-title">更多戒托推荐</div>
+                <!--轮播图-->
+                <div class="swiper-container header-container swiper-container-horizontal">
+                    <div class="swiper-wrapper">
+                        <a class="swiper-slide  " href="javascript:;" target="_blank">
+                            <img src="images/search-jewel/3_2.jpg">
+                        </a>
+                        <a class="swiper-slide" href="javascript:;" target="_blank">
+                            <img src="images/search-jewel/3_2.jpg">
+                        </a>
+                        <a class="swiper-slide" href="javascript:;" target="_blank">
+                            <img src="images/search-jewel/3_2.jpg">
+                        </a>
+                        <a class="swiper-slide" href="javascript:;" target="_blank">
+                            <img src="images/search-jewel/3_2.jpg">
+                        </a>
+                        <a class="swiper-slide" href="javascript:;" target="_blank">
+                            <img src="images/search-jewel/3_2.jpg">
+                        </a>
+                        <a class="swiper-slide" href="javascript:;" target="_blank">
+                            <img src="images/search-jewel/3_2.jpg">
+                        </a>
+                    </div>
+                    <div class="swiper-pagination  header-pagination swiper-pagination-clickable swiper-pagination-bullets">
+                    </div>
+                </div>
+            </div>
+
+            <!--idea底部-->
+            <footer class="home-footer ">
+                <div class="footer-img">
+                    <a href="javascript:;">
+                        <div></div>
+                        <p>100%正品</p>
+                    </a>
+                    <a href="javascript:;">
+                        <div></div>
+                        <p>全国包邮</p>
+                    </a>
+                    <a href="javascript:;">
+                        <div></div>
+                        <p>终身保养</p>
+                    </a>
+                    <a href="javascript:;">
+                        <div></div>
+                        <p>私人订制</p>
+                    </a>
+                </div>
+                <div class="footer_txt">
+                    <a href="javascript:;">
+                        <i></i>
+                        <span>4006-020-091</span>
+                    </a><br>
+                    <a href="javascript:;">
+                        <p>进店有礼·甜蜜不停</p>
+                    </a>
+                </div>
+                <div class="footer_txt2">
+                    <p>Copyright ©2016-2020 宝钻库</p>
+                    <p>www.baozhuanku.com</p>
+                    <p>粤ICP备 11146114号 -1</p>
+                </div>
+            </footer>
+        </section>
+
+
+        <footer class="pc-footer">
+            <a href="index.html">
+                <i class="go-home"></i>
+                <p>首页</p>
+            </a>
+            <a href="javascript:;">
+                <i class="idea on"></i>
+                <p class="on">定制</p>
+            </a>
+            <a href="book.html">
+                <i class="book"></i>
+                <p>证书</p>
+            </a>
+            <a href="my.html">
+                <i class="my "></i>
+                <p>我的</p>
+            </a>
+        </footer>
+    </div>
+</div>
+</body>
+<script>
+    var idea_banner = new Swiper('.header-container', {
+        pagination: '.header-pagination',
+        paginationClickable: true,
+        loop: true,
+        autoplay: 3000,
+        speed: 600
+    });
+</script>
+</html>

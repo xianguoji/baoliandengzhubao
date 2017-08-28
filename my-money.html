@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="screen-orientation" content="portrait">
+    <!--uc强制竖屏-->
+    <meta name="full-screen" content="yes">
+    <!-- UC强制全屏 -->
+    <meta name="browsermode" content="application">
+    <!-- UC应用模式 -->
+    <meta name="x5-orientation" content="portrait">
+    <!--QQ强制竖屏-->
+    <meta name="x5-fullscreen" content="true">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- QQ应用模式 -->
+    <title>我的财务</title>
+    <link href="images/logo1.ico" rel="shortcut icon" />
+
+</head>
+<script>
+    (function(win) {
+        var doc = win.document;
+        var docEl = doc.documentElement;
+        var tid;
+
+        function refreshRem() {
+            var width = docEl.getBoundingClientRect().width;
+            if (width > 540) { // 最大宽度
+                width = 540;
+            }
+            var rem = width / 6.4;
+            docEl.style.fontSize = rem + 'px';
+        }
+
+        win.addEventListener('resize', function() {
+            clearTimeout(tid);
+            tid = setTimeout(refreshRem, 300);
+        }, false);
+        win.addEventListener('pageshow', function(e) {
+            if (e.persisted) {
+                clearTimeout(tid);
+                tid = setTimeout(refreshRem, 300);
+            }
+        }, false);
+
+        refreshRem();
+
+    })(window);
+
+    //document.documentElement.style.fontSize = document.documentElement.clientWidth / 640*100 + 'px';
+</script>
+
+<style>
+    html{ font-family:'Microsoft Yahe','Segoe UI', 'Lucida Grande', 'Helvetica Neue', Helvetica, tahoma, Arial, 'Droid Sans', 'hiragino sans gb', stheiti, 'wenquanyi micro hei', '\5FAE\8F6F\96C5\9ED1', sans-serif;}
+    html,body{ background:#fff;}
+    *{box-sizing: border-box;padding:0; margin:0; list-style:none;}
+    input[type=”button”], input[type=”submit”], input[type=”reset”] { -webkit-appearance: none; appearance: none; }
+    img{ border:none; display:block; width: 100%;}
+    a{ text-decoration:none;outline: none;background: transparent; -webkit-tap-highlight-color: transparent; color:#333;}
+    body {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        font-size: 0.25rem;
+        line-height: 1.5;
+        color: #3d4145;
+        background-color: #eee;
+        /*overflow: hidden;*/
+    }
+    .main{
+        overflow: hidden;
+        margin-bottom: 0.3rem;
+    }
+    header{
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        flex-direction:row;
+        justify-content:space-between;
+        width:100%;
+        height: 1rem;
+        background: #797979;
+        position: fixed;
+        top:0;
+        z-index: 100;
+    }
+    .icon_back{
+        width: 0.8rem;
+        height: 0.8rem;
+        background: url(images/grzx/back.png) center no-repeat;
+        background-size: 50%;
+        margin-top: 0.1rem;
+    }
+    .logo_txt{
+        color: #fff;
+        font-size: 0.35rem;
+        margin-top: 0.2rem;
+    }
+    .shopping_cart{
+        background: url(images/index/i-gouwuce.png) center no-repeat;
+        background-size: 50%;
+        width: 1rem;
+        height: 1rem;
+    }
+    .bar-nav-title{
+        width:2.5rem;
+    }
+    section{
+        margin-bottom: 1.3rem;
+        margin-top: 1rem;
+        background: #eee;
+        overflow: hidden;
+    }
+
+    .pc-footer{
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        flex-direction:row;
+        justify-content:space-around;
+        width:100%;
+        height: 1.1rem;
+        background: #fff;
+        position: fixed;
+        bottom:0;
+        padding-top: 0.1rem;
+        border-top: 1px solid #F1F1F1;
+    }
+    .pc-footer a i{
+        display: inline-block;
+        width:0.55rem;
+        height:0.55rem;
+        vertical-align: middle;
+        text-align: center;
+    }
+    .on{
+        color:#C57E5D;
+    }
+
+    .go-home{
+        background: url("images/bottom-fxied/i-sy-e.png") no-repeat center;
+        background-size: contain;
+    }
+    .idea{
+        background: url("images/bottom-fxied/i-dz-e.png") no-repeat center;
+        background-size: contain;
+    }
+    .book{
+        background: url("images/bottom-fxied/i-zs-e.png") no-repeat center;
+        background-size: contain;
+    }
+    .my{
+        background: url("images/bottom-fxied/i-wd-d.png") no-repeat center;
+        background-size: contain;
+    }
+
+    .grzx-nav{
+        background-color: #fff;
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        flex-direction:row;
+        justify-content:space-around;
+        padding:0.25rem;
+    }
+    .grzx-tx{
+        width:0.8rem;
+        height:0.8rem;
+    }
+
+    .grzx-nav>a{
+        width:100%;
+        margin-left: 0.2rem;
+        background: url(images/grzx/i-tri.png) no-repeat right;
+    }
+    .grzx-info-number{
+        color: #999;
+    }
+
+    .grzx-details{
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        margin-top: 1px;
+    }
+    .grzx-details>div{
+        width:100%;
+        padding:0.2rem;
+        background-color: #fff;
+    }
+    .grzx-score{
+        border-right:1px solid #eee;
+    }
+
+    .grzx-money p:nth-of-type(1),.grzx-score p:nth-of-type(1){
+        padding-left: 0.5rem;
+        background: url("images/grzx/i-jifen.png") no-repeat left;
+        margin-bottom: 0.1rem;
+    }
+
+    .grzx-money p:nth-of-type(2),.grzx-score p:nth-of-type(2){
+        color: #999;
+    }
+
+    .grzx-item{
+        display: -webkit-flex; /* Safari */
+        display: flex;
+    }
+    .grzx-item>div{
+        width:100%;
+        background-color: #fff;
+        padding:0.1rem;
+        text-align: center;
+        font-size: 0.3rem;
+        font-weight: bold;
+        border-top: 1px solid #eee;
+    }
+    .grzx-item>div>p{
+        display: inline-block;
+        padding:0.1rem 0;
+    }
+    .grzx-item>div:nth-of-type(1)>p{
+        border-bottom: 0.04rem solid #c37d5a;
+        color: #c37d5a;
+    }
+    .grzx-list1{
+        border-right:1px solid #eee;
+    }
+    .jifen-title{
+        background-color: #fff;
+        font-size: 0.3rem;
+        margin-top: 0.15rem;
+        padding:0.2rem;
+    }
+    .jifen-title>span:nth-of-type(1){
+        font-weight: bold;
+        margin-right: 3rem;
+    }
+    .jifen-title>span:nth-of-type(2){
+        color:#c37d5a;
+    }
+    .jifen-title>p{
+        color: #999;
+        line-height: 0.8rem;
+    }
+
+    .info-cont{
+        background-color: #fff;
+    }
+    .info-cont li{
+        padding:0 0.3rem;
+    }
+    .info-cont li p{
+        border-top: 2px solid #eee;
+    }
+    .info-cont li p span:nth-of-type(1){
+        display: inline-block;
+        color: #999;
+        font-size: 0.3rem;
+        padding:0.2rem;
+        width:50%;
+    }
+    .info-cont li p span:nth-of-type(2){
+        width: 48%;
+        display: inline-block;
+        font-size: 0.3rem;
+        text-align: center;
+        color: #c37d5a;
+    }
+</style>
+<body>
+<div class="main">
+    <div class="home">
+        <header>
+            <a href="my.html"  class="icon_back"></a>
+            <a href="javascript:;"  class="logo_txt">我的积分</a>
+            <a href="javascript:;"  class="shopping_cart"></a>
+        </header>
+
+        <section class="content">
+            <div class="grzx-nav">
+                <div class="grzx-tx">
+                    <img src="images/grzx/avator.png" alt=""/>
+                </div>
+                <a href="my-info.html">
+                    <div class="grzx-info">
+                        <p>用户名称</p>
+                        <p class="grzx-info-number">钻石卡号15145645</p>
+                    </div>
+                </a>
+            </div>
+            <div class="grzx-details">
+                <div class="grzx-score">
+                    <a href="javascript:;">
+                        <p class="jifen">积分</p>
+                        <p>3542</p>
+                    </a>
+                </div>
+                <div class="grzx-money">
+                    <p class="yue">余额</p>
+                    <p>0</p>
+                </div>
+            </div>
+            <div class="jifen-title">
+                <span>当前积分</span>
+                <span>3542</span>
+                <p>当前积分仅适合用于官网，换取礼品，抽奖等</p>
+            </div>
+            <div class="grzx-item">
+                <div class="grzx-list1">
+                    <p>积分获取</p>
+                </div>
+                <div class="grzx-list2">
+                    <p>积分兑换</p>
+                </div>
+            </div>
+            <ul class="info-cont">
+                <li>
+                    <p>
+                        <span>订单完成获得积分</span>
+                        <span>1000</span>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span>抽奖</span>
+                        <span>100</span>
+                    </p>
+                </li>
+
+            </ul>
+
+
+        </section>
+
+        <footer class="pc-footer">
+            <a href="home.html">
+                <i class="go-home"></i>
+                <p>首页</p>
+            </a>
+            <a href="idea.html">
+                <i class="idea"></i>
+                <p>定制</p>
+            </a>
+            <a href="book.html">
+                <i class="book"></i>
+                <p>证书</p>
+            </a>
+            <a href="javascript:;">
+                <i class="my  on"></i>
+                <p class="on">我的</p>
+            </a>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

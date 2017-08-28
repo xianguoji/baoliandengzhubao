@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="screen-orientation" content="portrait">
+    <!--uc强制竖屏-->
+    <meta name="full-screen" content="yes">
+    <!-- UC强制全屏 -->
+    <meta name="browsermode" content="application">
+    <!-- UC应用模式 -->
+    <meta name="x5-orientation" content="portrait">
+    <!--QQ强制竖屏-->
+    <meta name="x5-fullscreen" content="true">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- QQ应用模式 -->
+    <title>账户管理</title>
+    <link href="images/logo1.ico" rel="shortcut icon" />
+
+</head>
+<script>
+    (function(win) {
+        var doc = win.document;
+        var docEl = doc.documentElement;
+        var tid;
+
+        function refreshRem() {
+            var width = docEl.getBoundingClientRect().width;
+            if (width > 540) { // 最大宽度
+                width = 540;
+            }
+            var rem = width / 6.4;
+            docEl.style.fontSize = rem + 'px';
+        }
+
+        win.addEventListener('resize', function() {
+            clearTimeout(tid);
+            tid = setTimeout(refreshRem, 300);
+        }, false);
+        win.addEventListener('pageshow', function(e) {
+            if (e.persisted) {
+                clearTimeout(tid);
+                tid = setTimeout(refreshRem, 300);
+            }
+        }, false);
+
+        refreshRem();
+
+    })(window);
+
+    //document.documentElement.style.fontSize = document.documentElement.clientWidth / 640*100 + 'px';
+</script>
+
+
+<style>
+    html{ font-family:'Microsoft Yahe','Segoe UI', 'Lucida Grande', 'Helvetica Neue', Helvetica, tahoma, Arial, 'Droid Sans', 'hiragino sans gb', stheiti, 'wenquanyi micro hei', '\5FAE\8F6F\96C5\9ED1', sans-serif;}
+    html,body{ background:#fff;}
+    *{box-sizing: border-box;padding:0; margin:0; list-style:none;}
+    input[type=”button”], input[type=”submit”], input[type=”reset”] { -webkit-appearance: none; appearance: none; }
+    img{ border:none; display:block; width: 100%;}
+    a{ text-decoration:none;outline: none;background: transparent; -webkit-tap-highlight-color: transparent; color:#333;}
+    body {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        font-size: 0.25rem;
+        line-height: 1.5;
+        color: #3d4145;
+        background-color: #eee;
+        /*overflow: hidden;*/
+    }
+    .main{
+        overflow: hidden;
+        margin-bottom: 0.3rem;
+    }
+    header{
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        flex-direction:row;
+        justify-content:space-between;
+        width:100%;
+        height: 1rem;
+        background: #797979;
+        position: fixed;
+        top:0;
+        z-index: 100;
+    }
+    .icon_back{
+        width: 0.8rem;
+        height: 0.8rem;
+        background: url(images/grzx/back.png) center no-repeat;
+        background-size: 50%;
+        margin-top: 0.1rem;
+    }
+    .logo_txt{
+        color: #fff;
+        font-size: 0.35rem;
+        margin-top: 0.2rem;
+    }
+    .shopping_cart{
+        background: url(images/index/i-gouwuce.png) center no-repeat;
+        background-size: 50%;
+        width: 1rem;
+        height: 1rem;
+    }
+    .bar-nav-title{
+        width:2.5rem;
+    }
+    section{
+        margin-bottom: 1.3rem;
+        margin-top: 1rem;
+        background: #eee;
+        overflow: hidden;
+    }
+
+    .pwd-cont{
+        background-color: #fff;
+    }
+    .pwd-cont li{
+        padding:0 0.3rem;
+    }
+    .pwd-cont li p{
+        border-bottom: 1px solid #eee;
+    }
+    .pwd-cont li p span{
+        width:40%;
+    }
+    .pwd-cont li p input{
+        border: none;
+        outline: none;
+        font-size: 0.28rem;
+    }
+    .pwd-cont li p span:nth-of-type(1){
+        display: inline-block;
+        font-size: 0.3rem;
+        padding:0.25rem;
+    }
+    .change-btn,.back-btn{
+        padding:0.2rem 1.5rem 0 1.5rem;
+    }
+    .change-btn a,.back-btn a{
+        display: block;
+        color: #fff;
+        font-size: 0.3rem;
+        text-align: center;
+        background-color: #C47D5D;
+        line-height: 0.7rem;
+        border-radius: 0.1rem;
+    }
+    .back-btn a{
+        background-color: #ccc;
+    }
+</style>
+<body>
+<div class="main">
+    <div class="home">
+        <header>
+            <a href="my.html"  class="icon_back"></a>
+            <a href="javascript:;"  class="logo_txt">账户管理</a>
+            <a href="javascript:;"  class="shopping_cart"></a>
+        </header>
+        <section>
+            <ul class="pwd-cont">
+                <li>
+                    <p>
+                        <span>原密码</span>
+                        <input type="password" placeholder="请输入原密码">
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span>新密码</span>
+                        <input type="password" placeholder="请输入新密码">
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span>确认新密码</span>
+                        <input type="password" placeholder="请确认新密码">
+                    </p>
+
+                </li>
+
+            </ul>
+            <div class="change-btn">
+                <a href="javascript:;">确认修改</a>
+            </div>
+            <div class="back-btn">
+                <a href="my.html">返回</a>
+            </div>
+        </section>
+
+
+    </div>
+</div>
+</body>
+</html>
